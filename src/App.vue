@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    根目录
-    <router-view>router-view</router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -12,8 +11,7 @@
 </script>
 
 <style>
-  html.body,
-  #app {
+  html,body,#app {
     height: 100%;
   }
 

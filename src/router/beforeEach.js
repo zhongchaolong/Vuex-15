@@ -4,10 +4,11 @@ import api from '@/js/api-config.js';
 
 // 不用检测登录权限的路径
 let noLoginCheckPage = [
-  '/',
-  '/goods/list',
-  '/goods/detail',
-  '/shopcart'
+  // 因为下面使用的是 to.name; 名字，所以也需要使用名字
+  'index',
+  'goodsList',
+  'goodsDetail',
+  'shopcart'
 ];
 
 // 1. 先获取用户要去的页面
@@ -22,9 +23,9 @@ export default function(to, from, next) {
   
   // 如果用户访问的页面, 无需登陆校验, 那么直接调用next方法进行路由跳转
   // some方法用来检测数据中是否具有符合条件的元素, 只要有一个满足就是true
-  if(noLoginCheckPage.some(v=>v ==toPageName)){
-    next();
-  }
+  if(noLoginCheckPage.some(v => v == toPageName)) {
+        return next();
+    }
 
   // 请求接口判断用户有没有登陆
   axios.get(api.isLogin).then(res => {

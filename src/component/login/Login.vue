@@ -41,20 +41,20 @@
             return {
                 // 表单提交的数据
                 formLabelAlign: {
-                    uname: '',
-                    upwd: ''
+                    uname: 'ivan',
+                    upwd: '123456'
                 },
                 // 表单校验规则
                 rules: {
                     uname: [
-                        { validator: unameFn, trigger: 'blur' },
+                        { min: 5, max: 18, message: '账号在5~18位间', trigger: 'blur' },
                         { required: true, message: '请填写账号', trigger: 'blur' },
-                        { min: 5, max: 18, message: '账号在5~18位间', trigger: 'blur' }
+                        { validator: unameFn, trigger: 'blur' }
                     ],
                     upwd: [
                         { validator: upwdFn, trigger: 'blur' },
                         // required: true代表这个选项必须要填写，message提示语
-                        { required: true, message: '请填写密码', trigger: 'blur' },
+                        // { required: true, message: '请填写密码', trigger: 'blur' },
                         // 三元表达式设定最少最大值
                         { pattern: /^\w{6,18}$/, message: '密码在6~18位', trigger: 'blur' },
                     ]
