@@ -1,11 +1,9 @@
 {
-  "name": "Vuex-15",
+  "name": "y",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "zhongchaolong <a2769183257@163.com>",
   "private": true,
-
-  
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
@@ -13,8 +11,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "element-ui": "^2.0.11",
+    "normalize.css": "^7.0.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
