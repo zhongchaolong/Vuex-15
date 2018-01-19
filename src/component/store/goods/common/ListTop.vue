@@ -1,5 +1,6 @@
 <template>
-    <div class="section">
+    <div>
+        <div class="section">
         <div class="wrapper">
             <div class="wrap-box">
                 <!--类别菜单-->
@@ -48,158 +49,101 @@
                 <!--幻灯片-->
                 <div class="left-705">
                     <div class="banner-img">
-                        <div id="focus-box" class="focus-box">
-                            <ul class="slides">
-                                <li class="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-                                    <a href="/goods.html">
-                                        <img src="/templates/main/images/focus_1.png" draggable="false">
-                                    </a>
-                                </li>
-                                <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
-                                    <a href="/goods.html">
-                                        <img src="/templates/main/images/focus_2.png" draggable="false">
-                                    </a>
-                                </li>
-                            </ul>
-                            <ol class="flex-control-nav flex-control-paging">
-                                <li>
-                                    <a class="">1</a>
-                                </li>
-                                <li>
-                                    <a class="flex-active">2</a>
-                                </li>
-                            </ol>
-                        </div>
-
+                        <!-- element-ui走马灯 -->
+                        <el-carousel indicator-position="outside">
+                            <el-carousel-item v-for="item in all.sliderlist" :key="item">
+                                <img :src="item.img_url" style='height:100%'>
+                            </el-carousel-item>
+                        </el-carousel>
                     </div>
                 </div>
                 <!--/幻灯片-->
 
                 <!--推荐商品-->
                 <div class="left-220">
-                    <ul class="side-img-list">
-
-                        <li>
-                            <div class="img-box">
-                                <label>1</label>
-                                <img src="/upload/201504/20/thumb_201504200314272543.jpg">
-                            </div>
-                            <div class="txt-box">
-                                <a href="/goods/show-98.html">奔腾（BNTN） 380功放+纽约至尊 套装家庭影院</a>
-                                <span>2015-04-20</span>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="img-box">
-                                <label>2</label>
-                                <img src="/upload/201504/20/thumb_201504200258403759.jpg">
-                            </div>
-                            <div class="txt-box">
-                                <a href="/goods/show-97.html">三星（SAMSUNG）UA40HU5920JXXZ 40英寸4K超高清</a>
-                                <span>2015-04-20</span>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="img-box">
-                                <label>3</label>
-                                <img src="/upload/201504/20/thumb_201504200242250674.jpg">
-                            </div>
-                            <div class="txt-box">
-                                <a href="/goods/show-95.html">惠普（HP）LaserJet 2035商用黑白激光打印机（黑色）</a>
-                                <span>2015-04-20</span>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="img-box">
-                                <label>4</label>
-                                <img src="/upload/201504/20/thumb_201504200239192345.jpg">
-                            </div>
-                            <div class="txt-box">
-                                <a href="/goods/show-94.html">金士顿（Kingston） DataTraveler SE9 32GB 金属U盘</a>
-                                <span>2015-04-20</span>
-                            </div>
-                        </li>
-
-                    </ul>
+                    <slide-list :list="all.toplist"></slide-list>
                 </div>
                 <!--/推荐商品-->
             </div>
         </div>
     </div>
+    </div>
+    
 </template>
 
 <script>
-    import appCategory from './Category'
+    import AppCategory from './Category'
+    import SlideList from './SlideList'
 
     export default {
         data() {
             return {
- all: {
-     // catelist: [],    // 分类列表数据
-     sliderlist: [],  // 轮播图列表数据
-     toplist: [],     // 置顶商品列表数据
-     catelist: [
-      {
-        id: 151,
-        pid: 150,
-        class_layer: 2,
-        title: "男装",
-        subcates: [
-        {
-          id: 155,
-          pid: 154,
-          class_layer: 4,
-          title: "休闲西装",
-          subcates: [
-                {
-                    id: 155,
-                    pid: 154,
-                    class_layer: 4,
-                    title: "裤子",
-                    subcates: [
-                     {
-                         id: 155,
-                         pid: 154,
-                         class_layer: 4,
-                         title: "秋裤",
-                         subcates: [
-                             {
-                                 id: 155,
-                                 pid: 154,
-                                 class_layer: 4,
-                                 title: "内裤"
-                             }
-                        ]
-                   }
-                ]
-                 }
-               ]
-                 }
-             ]
-         }          
-     ]
- }
+                all: {
+                    // catelist: [],    // 分类列表数据
+                    sliderlist: [],  // 轮播图列表数据
+                    toplist: [],     // 置顶商品列表数据
+                    catelist: [
+                        {
+                            id: 151,
+                            pid: 150,
+                            class_layer: 2,
+                            title: "男装",
+                            subcates: [
+                                {
+                                    id: 155,
+                                    pid: 154,
+                                    class_layer: 4,
+                                    title: "休闲西装",
+                                    subcates: [
+                                        {
+                                            id: 155,
+                                            pid: 154,
+                                            class_layer: 4,
+                                            title: "裤子",
+                                            subcates: [
+                                                {
+                                                    id: 155,
+                                                    pid: 154,
+                                                    class_layer: 4,
+                                                    title: "秋裤",
+                                                    subcates: [
+                                                        {
+                                                            id: 155,
+                                                            pid: 154,
+                                                            class_layer: 4,
+                                                            title: "内裤"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }          
+                    ]
+                }
             }
         },
 
-    methods: {
-        // 获取全部数据
-        getData() {
-            this.$http.get(this.$api.goodsTop).then(res => {
-                this.all = res.data.message;
-            });
+        methods: {
+            // 获取全部数据
+            getData() {
+                this.$http.get(this.$api.goodsTop).then(res => {
+                    this.all = res.data.message;
+                });
+            }
+        },
+
+        created() {
+            this.getData();
+        },
+
+        components: {
+            AppCategory,
+            SlideList
         }
-    },
-    created() {
-        this.getData();
-    },
-    components: {
-        appCategory,
-    }
- };
+    };
 </script>
 
 <style scoped>

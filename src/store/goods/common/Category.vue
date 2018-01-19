@@ -12,7 +12,6 @@
     export default {
         // 为了在当前组件内使用使用, 所以给自己定义一个名称
         name: 'app-category',
-
         // 接收父传递过来的数据
         props: ['list']
     }

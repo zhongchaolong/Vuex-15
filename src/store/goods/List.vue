@@ -7,16 +7,15 @@
                 <router-link to="/goods/list">首页</router-link>
             </div>
         </div>
-
         <!-- 头部 -->
         <list-top></list-top>
-
         <!-- 主体 -->
         <list-main></list-main>
     </div>
 </template>
 
 <script>
+    // 引入文件下级目录
     import ListTop from './common/ListTop.vue';
     import ListMain from './common/ListMain.vue';
 
@@ -29,5 +28,4 @@
 </script>
 
 <style scoped>
-
 </style>

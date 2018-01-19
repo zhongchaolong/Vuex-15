@@ -6,7 +6,7 @@
                 <a href="/index.html">首页</a>
                 <strong>|</strong>
                 <a href="/news.html">学员问题汇总</a>
-                <strong>|</strong>           
+                <strong>|</strong>
                 <a href="/photo.html">重难点专区</a>
                 <strong>|</strong>
                 <a href="/video.html">前端常用功能</a>
@@ -25,7 +25,8 @@
                 </div>
                 <div class="service">
                     <p>周一至周日 9:00-24:00</p>
-                    <a href="#" target="_blank"><i class="iconfont icon-phone"></i>在线客服</a>
+                    <a href="#" target="_blank">
+                        <i class="iconfont icon-phone"></i>在线客服</a>
                 </div>
             </div>
         </div>
@@ -40,5 +41,10 @@
 </script>
 
 <style scoped>
-
+    .footer{
+        width: 100%; 
+        position: absolute;
+        left:0;
+        bottom: 0;
+    }
 </style>
