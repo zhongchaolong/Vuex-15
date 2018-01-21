@@ -47,8 +47,8 @@
                 // 表单校验规则
                 rules: {
                     uname: [
-                        { min: 4, max: 18, message: '账号在5~18位间', trigger: 'blur' },
                         { required: true, message: '请填写账号', trigger: 'blur' },
+                        { min: 5, max: 18, message: '账号在5~18位间', trigger: 'blur' },
                         { validator: unameFn, trigger: 'blur' }
                     ],
                     upwd: [
