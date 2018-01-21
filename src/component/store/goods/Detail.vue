@@ -18,56 +18,49 @@
                         <div class="goods-box clearfix">
                             <!-- 图片预览 -->
                             <div class="pic-box">
-                                <detail-view :list="goods.imglist"></detail-view>
+                                <detail-view :imglist="goods.imglist"></detail-view>
                             </div>
 
                             <!-- 商品信息 -->
                             <detail-info :goods="goods.goodsinfo"></detail-info>
                         </div>
 
+                        <!-- 商品详情与评论 -->
                         <div id="goodsTabs" class="goods-tab bg-wrap">
-                            <!--选项卡-->
-                            <div id="tabHead" class="tab-head" style="position: static; top: 517px; width: 925px;">
-                                <ul>
-                                    <li>
-                                        <a class="selected" href="javascript:;">商品介绍</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;" class="">商品评论</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--/选项卡-->
+                                <el-tabs value="first" type="card">
+                                    <el-tab-pane label="商品介绍" name="first">
+                                        <!-- 商品详情是富文本编辑器写的, 所以用v-html -->
+                                        <div v-html="goods.goodsinfo.content" class="tab-content entry" style="display:block;"></div>
+                                    </el-tab-pane>
 
-                            <!--选项内容-->
-                            <div class="tab-content entry" style="display:block;">
-                                内容
-                            </div>
-
-                            <div class="tab-content" style="display: block;">
-                                <!-- 评论 -->
-                                <comment></comment>
-                            </div>
+                                <el-tab-pane label="商品评论" name="second">
+                                    <div class="tab-content" style="display: block;">
+                                        <!-- 评论需要频道与ID, ID可以通过$route.params.id拿, 但是频道必须得使用者通过属性设置了 -->
+                                        <comment tablename="goods"></comment>
+                                    </div>
+                                </el-tab-pane>
+                            </el-tabs>
                         </div>
                     </div>
-                    <!--/页面左边-->
+                        <!--/页面左边-->
 
-                    <!--页面右边-->
-                    <div class="left-220">
-                        <div class="bg-wrap nobg">
-                            <div class="sidebar-box">
-                                <h4>推荐商品</h4>
-                                <!-- 复用之前封装好的侧边栏列表组件 -->
-                                <slide-list :list="goods.hotgoodslist"></slide-list>
+                        <!--页面右边-->
+                        <div class="left-220">
+                            <div class="bg-wrap nobg">
+                                <div class="sidebar-box">
+                                    <h4>推荐商品</h4>
+                                    <!-- 复用之前封装好的侧边栏列表组件 -->
+                                    <slide-list :list="goods.hotgoodslist"></slide-list>
+                                </div>
                             </div>
                         </div>
+                        <!--/页面右边-->
                     </div>
-                    <!--/页面右边-->
                 </div>
             </div>
         </div>
-    </div>
 </template>
+
 
 <script>
     // 引入文件
@@ -78,25 +71,25 @@
 
     export default {
         // 存数据
-        data(){
+        data() {
             return {
-                id:null,
-                goods:{
-                    goodsinfo:{},
-                    imglist:[],
-                    hotgoodslist:[]
+                id: null,
+                goods: {
+                    goodsinfo: {},
+                    imglist: [],
+                    hotgoodslist: []
                 }
             }
         },
         // 获取数据的方法
         methods: {
-            getGoods(){
+            getGoods() {
                 this.$http.get(this.$api.goodsDetail + this.id).then(res => {
-                    this.goods=res.data.message;
+                    this.goods = res.data.message;
                 })
             }
         },
-        created () {
+        created() {
             this.id = this.$route.params.id;
             this.getGoods();
 
@@ -106,12 +99,11 @@
             SlideList,
             DetailView,
             DetailInfo,
-            Comment,
+            Comment
         }
-
     };
 </script>
 
 <style scoped>
-
+    
 </style>
