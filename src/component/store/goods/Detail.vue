@@ -71,7 +71,10 @@
 
 <script>
     // 引入文件
-    import SlideList from './common/SlideList.vue';
+    import SlideList from './common/SlideList'
+    import DetailView from './common/DetailView'
+    import DetailInfo from './common/DetailInfo'
+    import Comment from './common/Comment'
 
     export default {
         // 存数据
@@ -101,6 +104,9 @@
         // 调用文件
         components: {
             SlideList,
+            DetailView,
+            DetailInfo,
+            Comment,
         }
 
     };
