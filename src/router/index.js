@@ -14,6 +14,7 @@ import GoodsDetail from '@/component/store/goods/Detail'
 import Shopcart from '@/component/store/shopcart/Shopcart'
 import OrderCommit from '@/component/store/order/Commit'
 import OrderPay from '@/component/store/order/Pay'
+import OrderComplete from '@/component/store/order/Complete.vue'
 
 // 启动路由插件
 Vue.use(Router)
@@ -21,20 +22,23 @@ Vue.use(Router)
 // 创建路由实例, 并添加路由守卫
 let router = new Router({
   routes: [
-    // 登陆
-    { name: 'login', path: '/login', component: Login },
     // 首页就是商品列表页
-    { name: 'index', path: '/', component: Store ,children:
+    { name: 'index', path: '/', component: Store, children:
       [
         // 商品
-        { name: 'goodsList', path: '/goods/list', component: GoodsList },
-        { name: 'goodsDetail', path: '/goods/detail/:id', component: GoodsDetail },
+        { name: 'goodsList', path: 'goods/list', component: GoodsList },
+        { name: 'goodsDetail', path: 'goods/detail/:id', component: GoodsDetail },
         // 购物车
-        { name: 'shopcart', path: '/shopcart', component: Shopcart },
-        { name: 'orderCommit', path: '/order/commit', component: OrderCommit },
-        { name: 'orderPay', path: '/order/pay', component: OrderPay }
+        { name: 'shopcart', path: 'shopcart', component: Shopcart },
+        // 订单
+        { name: 'orderCommit', path: 'order/commit/:ids', component: OrderCommit },
+        { name: 'orderPay', path: 'order/pay/:id', component: OrderPay },
+        { name: 'orderComplete', path: 'order/complete', component: OrderComplete },
       ]
-    }
+    },
+
+    // 登陆
+    { name: 'login', path: '/login', component: Login },
   ]
 });
 router.beforeEach(beforeEach)
